@@ -1,4 +1,5 @@
 let question = [
+  'welcome',
   'tangan kesemutan',
   'kucing belang',
   'minum jamu',
@@ -35,19 +36,22 @@ cekJawaban.style.display = 'none';
 answerBtn.style.display = 'none';
 newBtn.style.display = 'none';
 nextBtn.addEventListener('click', function () {
-  if (idSoal < 18) {
+  if (idSoal < question.length-1) {
     dice.src = `${idSoal + 1}.png`;
     idSoal++;
+    answerBtn.style.display = 'inline';
+  nextBtn.innerHTML = '⏭️ Next Guess';
+  cekJawaban.style.display = 'inline';
+  nextBtn.style.display = 'none';
+  cekJawaban.style.display ='inline'
   } else {
     dice.src = 'game-over.jpg';
     cekJawaban.style.display = 'none';
     answerBtn.style.display = 'none';
     nextBtn.style.display = 'none';
+    newBtn.style.display='inline'
   }
-  answerBtn.style.display = 'inline';
-  nextBtn.innerHTML = '⏭️ Next Guess';
-  cekJawaban.style.display = 'inline';
-  nextBtn.style.display = 'none';
+  
 });
 
 answerBtn.addEventListener('click', function () {
@@ -59,6 +63,7 @@ answerBtn.addEventListener('click', function () {
     scoreBtn.innerHTML = Math.floor(score);
     answerBtn.style.display = 'none';
     nextBtn.style.display = 'inline';
+    cekJawaban.style.display='none'
   }
 
   if (cekJawaban.value.toLowerCase() !== question[idSoal]) {
@@ -76,16 +81,19 @@ answerBtn.addEventListener('click', function () {
       );
     }
   }
+  cekJawaban.value=''
 });
 
 newBtn.addEventListener('click', function () {
-  idSoal = 0;
-  dice.src = `${idSoal + 1}.png`;
+  score =0
+  scoreBtn.innerHTML = score
+  idSoal = 1;
+  dice.src = `${idSoal}.png`;
   cekJawaban.style.display = 'inline';
   answerBtn.style.display = 'inline';
   nextBtn.style.display = 'none';
   life = 3;
   lifeBtn.innerHTML = life;
   newBtn.style.display = 'none';
-  score = 0;
+  
 });

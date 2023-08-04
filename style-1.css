@@ -175,7 +175,8 @@ main {
 }
 
 .btn--roll {
-  top: 53.3rem;
+  top: 45rem;
+  width: 40rem;
 }
 .btn--hold {
   top: 39.1rem;
